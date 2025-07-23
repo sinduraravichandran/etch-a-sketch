@@ -9,9 +9,13 @@ for (let i=0; i<256; i++) {
 }
 
 container.addEventListener("mouseover", (event) => {
+    const color1 = getRandomNumber();
+    const color2 = getRandomNumber();
+    const color3 = getRandomNumber();
     const targetElement = document.querySelector(`#${event.target.id}`);
     targetElement.classList.remove("div");
     targetElement.classList.add("divColor");
+    targetElement.style.backgroundColor = `rgb(${color1} ${color2} ${color3})`
 })
 
 button.addEventListener("click", (event) => {
@@ -19,7 +23,6 @@ button.addEventListener("click", (event) => {
     if (!(gridSize >= 1 && gridSize <= 100)) {
         gridSize = prompt("Please input a valid integer from 1 to 100")
     }
-    console.log('hi')
 
     //remove all children from container
     while (container.firstChild) {
@@ -35,3 +38,13 @@ button.addEventListener("click", (event) => {
     container.setAttribute("style", `width: ${gridSize*50}px`)
     
 })
+
+
+
+function getRandomNumber() {
+    return Math.floor(Math.random() * 255) + 1
+
+}
+
+
+
